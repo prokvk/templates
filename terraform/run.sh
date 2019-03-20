@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ "$AWS_CREDENTIALS_PATH" == "" ]; then
+	echo "ERROR: Required variable AWS_CREDENTIALS_PATH missing" && exit 1
+fi
+
 if [ "$TF_CMD" != "" ]; then
 	if [ "$TF_CMD" == 'apply' ] || [ "$TF_CMD" == 'destroy' ]; then
 		AUTO_APPROVE="-auto-approve"
